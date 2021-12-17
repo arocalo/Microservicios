@@ -1,5 +1,10 @@
 server:
-  port: 8080
+  port: 8081
+
+#urls
+url:
+  factoria: http://localhost:8000/api/averia/exists
+
 
 eureka:
   client:
@@ -12,7 +17,7 @@ spring:
   main:
     banner-mode: off
   application:
-    name: factoria
+    name: gestorIncidencias
 
   rabbitmq:
     host: localhost
