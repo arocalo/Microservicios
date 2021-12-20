@@ -1,7 +1,4 @@
 # Default ignored files
 /shelf/
 .idea/*
-__pycache__/*
-binance/__pycache__/*
-venv/*
-config.py
+/*/target/
