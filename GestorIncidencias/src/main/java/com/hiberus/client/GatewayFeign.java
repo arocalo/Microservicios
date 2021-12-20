@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
-@org.springframework.cloud.openfeign.FeignClient("gateway")
+@FeignClient("gateway")
 public interface GatewayFeign {
 
 //    @RequestMapping(method = RequestMethod.GET)
