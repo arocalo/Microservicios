@@ -11,7 +11,7 @@
     <modules>
         <module>Factoria</module>
         <module>GestorIncidencias</module>
-        <module>AignacionEquipos</module>
+        <module>AsignacionEquipos</module>
         <module>EvolucionReparacion</module>
         <module>GestorExitos</module>
         <module>GestorRenovaciones</module>

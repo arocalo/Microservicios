@@ -20,6 +20,13 @@ spring:
         - Path=/api/**
         filters:
         - StripPrefix=1
+
+      - id: asignacion
+        uri: lb://asignacion
+        predicates:
+        - Path=/api/**
+        filters:
+        - StripPrefix=1
 #
 #      - id: vuelos
 #        uri: lb://vuelos
