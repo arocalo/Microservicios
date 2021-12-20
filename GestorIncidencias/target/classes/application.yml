@@ -3,7 +3,8 @@ server:
 
 #urls
 url:
-  factoria: http://localhost:8000/api/averia/exists
+  factoria: /api/averia/exists/{idFactoria}/{idMaquina}
+  equipos:
 
 
 eureka:

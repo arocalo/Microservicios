@@ -1,6 +1,6 @@
 package com.hiberus.utils;
 
-import com.hiberus.client.FeignApi;
+import com.hiberus.client.GatewayFeign;
 import com.hiberus.configuration.RabbitmqConfig;
 import com.hiberus.domain.dto.MaquinaDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class ConsumerAverias {
 
     @Autowired
-    private FeignApi client;
+    private GatewayFeign client;
 
 
     @RabbitListener(queues = RabbitmqConfig.QUEUE_GENERIC_NAME)
@@ -24,6 +24,7 @@ public class ConsumerAverias {
         log.info("Recibida averia: {}", mq);
        if (client.factoryInfo(mq.getIdFactoria(), mq.getIdMaquina())){
            log.info("Tramitando averia");
+
        }else{
            log.warn("La maquina de la averia no existe");
        }
