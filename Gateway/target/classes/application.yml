@@ -28,14 +28,13 @@ spring:
         filters:
         - StripPrefix=1
 
-#
-#      - id: vuelos
-#        uri: lb://vuelos
-#        predicates:
-#        - Path=/api/vuelo/**
-#        filters:
-#        - StripPrefix=1
-#
+      - id: evolucion
+        uri: lb://evolucion
+        predicates:
+          - Path=/api/evolucion/**
+        filters:
+          - StripPrefix=1
+
 #      - id: hotel-reservation-servic
 #        uri: lb://hotel-reservation-service
 #        predicates:
