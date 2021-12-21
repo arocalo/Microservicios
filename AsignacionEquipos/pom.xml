@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Factoria</artifactId>
+    <artifactId>AignacionEquipos</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -17,27 +17,6 @@
     </properties>
 
     <dependencies>
-        <!--******************************* RABBITMQ *******************************-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
-        </dependency>
-
-        <!--******************************* MONGO *******************************-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-        </dependency>
-
         <!--*****************************SWAGGER*********************************-->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -74,5 +53,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+
     </dependencies>
+
 </project>

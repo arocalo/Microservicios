@@ -1,0 +1,77 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+      - id: factoria
+        uri: lb://factoria
+        predicates:
+        - Path=/api/averia/**
+        filters:
+        - StripPrefix=1
+
+      - id: asignacion
+        uri: lb://asignacion
+        predicates:
+        - Path=/api/equipo/**
+        filters:
+        - StripPrefix=1
+
+      - id: evolucion
+        uri: lb://evolucion
+        predicates:
+          - Path=/api/evolucion/**
+        filters:
+          - StripPrefix=1
+
+      - id: exitos
+        uri: lb://exitos
+        predicates:
+          - Path=/api/exitos/**
+        filters:
+          - StripPrefix=1
+
+      - id: renovaciones
+        uri: lb://renovaciones
+        predicates:
+          - Path=/api/renovaciones/**
+        filters:
+          - StripPrefix=1
+
+#      - id: hotel-reservation-servic
+#        uri: lb://hotel-reservation-service
+#        predicates:
+#        - Path=/api/**
+#        filters:
+#        - StripPrefix=1
+#        - name: CircuitBreaker
+#          args:
+#            name: myCircuitBreaker
+#            fallbackUri: forward:/errorEnHotel
+#            statusCodes:
+#            - 500
+#            - "NOT_FOUND"
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace, gateway, health
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl.defaultZone: http://localhost:8761/eureka
