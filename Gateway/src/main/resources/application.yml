@@ -17,16 +17,17 @@ spring:
       - id: factoria
         uri: lb://factoria
         predicates:
-        - Path=/api/**
+        - Path=/api/averia/**
         filters:
         - StripPrefix=1
 
       - id: asignacion
         uri: lb://asignacion
         predicates:
-        - Path=/api/**
+        - Path=/api/equipo/**
         filters:
         - StripPrefix=1
+
 #
 #      - id: vuelos
 #        uri: lb://vuelos
