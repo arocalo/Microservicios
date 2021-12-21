@@ -5,6 +5,7 @@ server:
 url:
   factoria: /api/averia/exists/{idFactoria}/{idMaquina}
   equipos: /api/equipo/asignar
+  evolucion: /api/evolucion
 
 
 eureka:
