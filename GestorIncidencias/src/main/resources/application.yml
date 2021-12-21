@@ -4,7 +4,7 @@ server:
 #urls
 url:
   factoria: /api/averia/exists/{idFactoria}/{idMaquina}
-  equipos:
+  equipos: /api/equipo/asignar
 
 
 eureka:
