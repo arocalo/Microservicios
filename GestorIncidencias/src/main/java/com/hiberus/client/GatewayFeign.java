@@ -19,4 +19,9 @@ public interface GatewayFeign {
     @RequestMapping(method = RequestMethod.POST,value="${url.equipos}")
     AveriaDTO asignarEquipo(AveriaDTO avr);
 
+    @RequestMapping(method = RequestMethod.POST,value="${url.evolucion}")
+    AveriaDTO evolucionarAveria(AveriaDTO avr);
+
+
+
 }

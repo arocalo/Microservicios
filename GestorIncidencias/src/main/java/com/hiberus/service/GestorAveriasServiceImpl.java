@@ -9,18 +9,43 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class GestorAveriasServiceImpl  implements GestorAveriasService {
+public class GestorAveriasServiceImpl implements GestorAveriasService {
     @Autowired
     private GatewayFeign client;
 
     @Override
     public void gestionarAverias(MaquinaDTO mq) {
-        if (client.factoryInfo(mq.getIdFactoria(), mq.getIdMaquina())){
+        if (client.factoryInfo(mq.getIdFactoria(), mq.getIdMaquina())) {
             log.info("Tramitando averia");
-            AveriaDTO avr = new AveriaDTO(mq.getId(),"",mq.getIdFactoria(),mq.getIdMaquina(),mq.getFechaAlta(),null,null,null);
-            avr =client.asignarEquipo(avr);
+            AveriaDTO avr = new AveriaDTO(mq.getId(), "", mq.getIdFactoria(), mq.getIdMaquina(), mq.getFechaAlta(), null, null, null);
+            avr = client.asignarEquipo(avr);
+            avr = client.evolucionarAveria(avr);
+            
+            while (avr.getEstado() == AveriaDTO.Estados.EN_PROCESO) {
+                log.info("La averia se encuentra en proceso: {}", avr);
+                try {
+                    Thread.sleep(2 * 1000);
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                }
+                avr = client.evolucionarAveria(avr);
+            }
 
-        }else{
+            switch (avr.getEstado()) {
+                case REPARADA:
+                    System.out.println("Reparada");
+                    break;
+                case SIN_SOLUCIÓN:
+                    System.out.println("Sin solucion");
+                    break;
+                default:
+                    log.error("La averia no se ha procesado correctamente");
+                    break;
+            }
+
+            log.info("Averia procesada {}", avr);
+
+        } else {
             log.warn("La maquina de la averia no existe");
         }
     }
