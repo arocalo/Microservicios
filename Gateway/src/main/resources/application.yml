@@ -35,6 +35,13 @@ spring:
         filters:
           - StripPrefix=1
 
+      - id: exitos
+        uri: lb://exitos
+        predicates:
+          - Path=/api/exitos/**
+        filters:
+          - StripPrefix=1
+
 #      - id: hotel-reservation-servic
 #        uri: lb://hotel-reservation-service
 #        predicates:
