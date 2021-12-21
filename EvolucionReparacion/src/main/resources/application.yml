@@ -1,0 +1,16 @@
+server:
+  port: 8083
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl.defaultZone: http://localhost:8761/eureka
+#    serviceUrl.defaultZone: http://client-registry:8761/eureka
+
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: evolucion
+
