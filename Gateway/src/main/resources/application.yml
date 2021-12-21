@@ -42,6 +42,13 @@ spring:
         filters:
           - StripPrefix=1
 
+      - id: renovaciones
+        uri: lb://renovaciones
+        predicates:
+          - Path=/api/renovaciones/**
+        filters:
+          - StripPrefix=1
+
 #      - id: hotel-reservation-servic
 #        uri: lb://hotel-reservation-service
 #        predicates:
