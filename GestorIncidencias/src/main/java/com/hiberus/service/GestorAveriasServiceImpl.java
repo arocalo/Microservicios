@@ -33,10 +33,18 @@ public class GestorAveriasServiceImpl implements GestorAveriasService {
 
             switch (avr.getEstado()) {
                 case REPARADA:
-                    System.out.println("Reparada");
+                    if(client.cerrarAveriaExitosa(avr)){
+                        log.info("Averia exitosa almacenada correctamente");
+                    }else{
+                        log.warn("PROBLEMA al almacenar averia exitosa");
+                    }
                     break;
                 case SIN_SOLUCIÓN:
-                    System.out.println("Sin solucion");
+                    if(client.renovarAveria(avr)){
+                        log.info("Averia sin_solucion almacenada correctamente ");
+                    }else{
+                        log.warn("PROBLEMA al almacenar averia sin_solucion");
+                    }
                     break;
                 default:
                     log.error("La averia no se ha procesado correctamente");
